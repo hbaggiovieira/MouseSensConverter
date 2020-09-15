@@ -30,26 +30,44 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     //Função calcular
     private fun calculate() {
+        val dpiConstant = editDpi1.text.toString().toFloat() / editDpi2.text.toString().toFloat()
         val dpi1 = editDpi1.text.toString()
         val dpi2 = editDpi2.text.toString()
         val sensCs = editSensCS.text.toString()
         val sensVal = editSensValorant.text.toString()
 
+        if (dpi2 == "0") {
+            Toast.makeText(this, "Não é possível inserir valor 0!", Toast.LENGTH_LONG)
+                .show()
+        } else {
 
-        try {
-        when  {
-            //Cálculo sem dpi
-            sensVal == "" && (dpi1 == "" || dpi2 == "") -> textResult.text = "Sens: ${"%.4f".format(sensCs.toFloat() / 3.18)}"
-            sensCs == "" && (dpi1 == "" || dpi2 == "")   -> textResult.text = "Sens:${"%.4f".format(sensVal.toFloat() * 3.18)}"
+            try {
+                when {
+                    //Cálculo sem dpi
+                    sensVal == "" && (dpi1 == "" || dpi2 == "") -> textResult.text =
+                        "Sens: ${"%.4f".format(sensCs.toFloat() / 3.18)}"
+                    sensCs == "" && (dpi1 == "" || dpi2 == "") -> textResult.text =
+                        "Sens:${"%.4f".format(sensVal.toFloat() * 3.18)}"
 
-            //Cálculo com dpi
-            (dpi1 != "" && dpi2 != "") && sensVal == "" -> textResult.text = "Sens: ${"%.4f".format(((dpi1.toFloat() / dpi2.toFloat()) * sensCs.toFloat() / 3.18))}"
-            (dpi1 != "" && dpi2 != "") && sensCs == "" -> textResult.text = "Sens: ${"%.4f".format((dpi1.toFloat() / dpi2.toFloat()) * sensVal.toFloat() * 3.18)}"
+                    //Cálculo com dpi
+                    (dpi1 != "" && dpi2 != "") && sensVal == "" -> textResult.text =
+                        "Sens: ${"%.4f".format(dpiConstant * (sensCs.toFloat() / 3.18))}"
+                    (dpi1 != "" && dpi2 != "") && sensCs == "" -> textResult.text =
+                        "Sens: ${"%.4f".format(dpiConstant * (sensVal.toFloat() * 3.18))}"
 
-            else -> Toast.makeText(this,"Verifique os valores inseridos e tente novamente!", Toast.LENGTH_LONG).show()
-        }
-        }catch (nfe: NumberFormatException) {
-            Toast.makeText(this, "Impossível calcular. Verifique os valores inseridos e tente novamente!", Toast.LENGTH_LONG).show()
+                    else -> Toast.makeText(
+                        this,
+                        "Verifique os valores inseridos e tente novamente!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            } catch (nfe: NumberFormatException) {
+                Toast.makeText(
+                    this,
+                    "Impossível calcular. Verifique os valores inseridos e tente novamente!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
 
         /*try {
