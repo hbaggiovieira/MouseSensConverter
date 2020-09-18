@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         button_calculate.setOnClickListener(this)
 
     }
@@ -44,24 +45,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             try {
                 //CS -> Valorant sem dpi
-                if (dpi1.isEmpty() || dpi2.isEmpty() && sensCs.isNotEmpty()) {
-                    val result1 = (sensCs.toFloat() / SENS_CONSTANT)
-                    textResult.text = "Sens: ${"%.4f".format(result1)}"
+                if ((dpi1.isEmpty() || dpi2.isEmpty()) && sensVal.isEmpty()) {
+                    val result = (sensCs.toFloat() / SENS_CONSTANT)
+                    textResult.text = "Sens: ${"%.4f".format(result)}"
                 }
                 //Valorant -> CS sem dpi
-                else if (dpi1.isEmpty()|| dpi2.isEmpty() && sensVal.isNotEmpty()) {
-                    val result2 = (sensVal.toFloat() * SENS_CONSTANT)
-                    textResult.text = "Sens: ${"%.4f".format(result2)}"
+                else if ((dpi1.isEmpty() || dpi2.isEmpty()) && sensCs.isEmpty()) {
+                    val result = (sensVal.toFloat() * SENS_CONSTANT)
+                    textResult.text = "Sens: ${"%.4f".format(result)}"
 
                     //CS -> Valorant com dpi
-                } else if (dpi1.isNotEmpty() && dpi2.isNotEmpty() && sensCs.isNotEmpty()) {
-                    val result3 = ((dpi1.toFloat() / dpi2.toFloat()) * (sensCs.toFloat() / SENS_CONSTANT))
-                    textResult.text = "Sens: ${"%.4f".format(result3)}"
+                } else if ((dpi1.isNotEmpty() && dpi2.isNotEmpty()) && sensVal.isEmpty()) {
+                    val result = ((dpi1.toFloat() / dpi2.toFloat()) * (sensCs.toFloat() / SENS_CONSTANT))
+                    textResult.text = "Sens: ${"%.4f".format(result)}"
 
                     //Valorant -> CS com dpi
-                } else if (dpi1.isNotEmpty() && dpi2.isNotBlank() && sensVal.isNotEmpty()) {
-                    val result4 = ((dpi1.toFloat() / dpi2.toFloat()) * (sensVal.toFloat() * SENS_CONSTANT))
-                    textResult.text = "Sens: ${"%.4f".format(result4)}"
+                } else if ((dpi1.isNotEmpty() && dpi2.isNotEmpty()) && sensCs.isEmpty()) {
+                    val result = ((dpi1.toFloat() / dpi2.toFloat()) * (sensVal.toFloat() * SENS_CONSTANT))
+                    textResult.text = "Sens: ${"%.4f".format(result)}"
                 } else {
                     Toast.makeText(
                         this,

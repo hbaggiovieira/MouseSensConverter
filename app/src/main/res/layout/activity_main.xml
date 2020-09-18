@@ -10,6 +10,8 @@
         android:id="@+id/button_calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/custom_button_background"
         android:fontFamily="@font/arbutus"
         android:padding="5dp"
@@ -28,17 +30,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/arbutus"
         android:hint="DPI Mouse Antigo"
         android:inputType="numberDecimal"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/editDpi2"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/editSensCS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/editDpi2" />
 
     <EditText
         android:id="@+id/editDpi2"
@@ -46,16 +46,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/arbutus"
         android:hint="DPI Mouse Novo"
         android:inputType="numberDecimal"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/editSensCS"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/editDpi1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDpi1" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/editSensCS"
@@ -63,16 +62,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/arbutus"
         android:hint="Sensitivity CS:GO"
         android:inputType="numberDecimal"
-        android:padding="5dp"
+        android:padding="15dp"
         app:layout_constraintBottom_toTopOf="@+id/editSensValorant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDpi2" />
+        app:layout_constraintTop_toBottomOf="@+id/editDpi1" />
 
     <EditText
         android:id="@+id/editSensValorant"
@@ -84,8 +82,8 @@
         android:fontFamily="@font/arbutus"
         android:hint="Sensitivity Valorant"
         android:inputType="numberDecimal"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_calculate"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/textResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editSensCS" />
@@ -95,6 +93,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="5dp"
         android:fontFamily="@font/arbutus"
         android:gravity="center|center_horizontal|center_vertical"
@@ -107,12 +106,14 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/editDpi1"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/editDpi2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/amarelo_orbe_twitch_banner__1_" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
