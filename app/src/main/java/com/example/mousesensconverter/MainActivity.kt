@@ -71,7 +71,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-        /*try {
+    }
+}
+
+
+//Another way of doing it
+/*try {
             //CS -> Valorant sem dpi
             if (dpi1 == "" || dpi2 == "" && sensCs != "") {
                 val result1 = (sensCs.toFloat() / 3.18f)
@@ -104,6 +109,3 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Toast.makeText(this, "Informar valores válidos!", Toast.LENGTH_LONG)
                 .show()
         }*/
-    }
-}
-
