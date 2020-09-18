@@ -35,8 +35,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val dpi2 = editDpi2.text.toString()
         val sensCs = editSensCS.text.toString()
         val sensVal = editSensValorant.text.toString()
+        val SENS_CONSTANT = 3.18f
 
-        if (dpi2 == "0") {
+        if (dpi2.isEmpty()) {
             Toast.makeText(this, "Não é possível inserir valor 0!", Toast.LENGTH_LONG)
                 .show()
         } else {
@@ -44,16 +45,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             try {
                 when {
                     //Cálculo sem dpi
-                    sensVal == "" && (dpi1 == "" || dpi2 == "") -> textResult.text =
-                        "Sens: ${"%.4f".format(sensCs.toFloat() / 3.18)}"
-                    sensCs == "" && (dpi1 == "" || dpi2 == "") -> textResult.text =
-                        "Sens:${"%.4f".format(sensVal.toFloat() * 3.18)}"
+                    sensVal.isEmpty() && (dpi1.isEmpty() || dpi2.isEmpty()) -> textResult.text =
+                        "Sens: ${"%.4f".format(sensCs.toFloat() / SENS_CONSTANT)}"
+                    sensCs.isEmpty() && (dpi1.isEmpty()|| dpi2.isEmpty()) -> textResult.text =
+                        "Sens:${"%.4f".format(sensVal.toFloat() * SENS_CONSTANT)}"
 
                     //Cálculo com dpi
-                    (dpi1 != "" && dpi2 != "") && sensVal == "" -> textResult.text =
-                        "Sens: ${"%.4f".format(dpiConstant * (sensCs.toFloat() / 3.18))}"
-                    (dpi1 != "" && dpi2 != "") && sensCs == "" -> textResult.text =
-                        "Sens: ${"%.4f".format(dpiConstant * (sensVal.toFloat() * 3.18))}"
+                    (dpi1.isNotEmpty() && dpi2.isNotEmpty()) && sensVal.isEmpty() -> textResult.text =
+                        "Sens: ${"%.4f".format(dpiConstant * (sensCs.toFloat() / SENS_CONSTANT))}"
+                    (dpi1.isNotEmpty() && dpi2.isNotEmpty()) && sensCs.isEmpty()-> textResult.text =
+                        "Sens: ${"%.4f".format(dpiConstant * (sensVal.toFloat() * SENS_CONSTANT))}"
 
                     else -> Toast.makeText(
                         this,
